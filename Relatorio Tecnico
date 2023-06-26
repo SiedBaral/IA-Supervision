@@ -1,0 +1,54 @@
+Relatório Técnico: Análise de Classificadores
+
+Introdução:
+Este relatório apresenta uma análise detalhada de diferentes métodos de classificação aplicados a um conjunto de dados de câncer de mama. O objetivo é comparar o desempenho dos métodos de classificação e determinar qual deles é mais adequado para prever a presença de câncer de mama com base em características diagnósticas.
+
+Metodologia:
+Foram utilizados quatro métodos de classificação supervisionada: K-Nearest Neighbors (KNN), Árvore de Decisão, Support Vector Machines (SVM) e Naive Bayes. O conjunto de dados utilizado é o "Breast Cancer" (câncer de mama), disponível na biblioteca scikit-learn.
+
+O programa foi implementado em Python e consiste em uma série de etapas:
+
+Carregamento do conjunto de dados: O conjunto de dados "Breast Cancer" foi carregado usando a função load_breast_cancer() da biblioteca scikit-learn.
+
+Pré-processamento dos dados: Os dados foram normalizados usando a padronização (StandardScaler) para garantir que todas as características tenham a mesma escala.
+
+Divisão dos dados: Os dados foram divididos em conjuntos de treinamento e teste usando a função train_test_split(). O conjunto de teste corresponde a 20% dos dados.
+
+Variação dos parâmetros: Para o método KNN, foi permitido ao usuário variar o número de vizinhos (parâmetro K) para determinar qual valor apresenta o melhor desempenho. Para os demais métodos, foram testados diferentes parâmetros (profundidade máxima para Árvore de Decisão e margem de tolerância e tipo de kernel para SVM).
+
+Treinamento dos classificadores: Os classificadores foram treinados usando os conjuntos de treinamento e os melhores parâmetros determinados.
+
+Avaliação dos classificadores: Os classificadores foram avaliados usando métricas de avaliação, incluindo acurácia, precisão, recall, matriz de confusão, F1-Score e curva ROC.
+
+Ranking dos métodos: Um ranking foi gerado com base na média geral das métricas de avaliação para cada método.
+
+Resultados:
+Os resultados obtidos são apresentados no console, fornecendo informações sobre o desempenho de cada método de classificação.
+
+KNN: O método KNN apresentou um melhor valor de vizinhos (K) igual a 5, com acurácia de 0,947, precisão de 0,958, recall de 0,958 e F1-Score de 0,958.
+
+Árvore de Decisão: O método de Árvore de Decisão obteve o melhor desempenho com uma profundidade máxima igual a 5, alcançando uma acurácia de 0,939, precisão de 0,944, recall de 0,958 e F1-Score de 0,951.
+
+SVM: O SVM apresentou os melhores resultados com uma margem de tolerância (C) igual a 0,1 e um tipo de kernel linear. Ele obteve uma acurácia de 0,982, precisão de 0,973, recall de 1,0 e F1-Score de 0,986.
+
+Naive Bayes: O método Naive Bayes alcançou uma acurácia de 0,965, precisão de 0,959, recall de 0,986 e F1-Score de 0,972.
+
+O ranking dos métodos, com base na média geral das métricas de avaliação, foi o seguinte:
+
+SVM: 0,985
+Naive Bayes: 0,970
+KNN: 0,955
+Árvore de Decisão: 0,948
+Discussão:
+Com base nos resultados obtidos, o SVM foi o método de classificação que obteve o melhor desempenho geral, seguido pelo Naive Bayes, KNN e Árvore de Decisão. O SVM apresentou uma acurácia de 0,982, mostrando uma alta taxa de acertos nas previsões. Além disso, obteve uma alta precisão, recall e F1-Score, o que indica um bom equilíbrio entre as métricas.
+
+O Naive Bayes também obteve bons resultados, com uma acurácia de 0,965 e um F1-Score de 0,972. Ele demonstrou uma boa capacidade de prever corretamente tanto os casos positivos quanto os negativos.
+
+O KNN e a Árvore de Decisão apresentaram um desempenho um pouco inferior em comparação com o SVM e o Naive Bayes. No entanto, ainda assim, eles alcançaram resultados satisfatórios, com acurácias em torno de 0,947 e 0,939, respectivamente.
+
+Conclusão:
+Com base na análise dos resultados, podemos concluir que o SVM e o Naive Bayes são os métodos de classificação mais adequados para prever a presença de câncer de mama com base nas características diagnósticas fornecidas. No entanto, é importante considerar que os resultados podem variar dependendo do conjunto de dados e das características específicas do problema em estudo.
+
+O código implementado permitiu a variação dos parâmetros e a avaliação de diferentes métricas de avaliação, como acurácia, precisão, recall, matriz de confusão, F1-Score e curva ROC. Essas métricas fornecem uma visão abrangente do desempenho dos classificadores, permitindo uma análise mais detalhada de seu comportamento.
+
+Recomenda-se o uso desse código como ponto de partida para futuras análises de classificação em conjuntos de dados de câncer de mama ou em outros problemas similares, possibilitando a comparação de diferentes métodos e a seleção daquele que melhor se adequa às necessidades específicas do projeto.
