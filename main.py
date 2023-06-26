@@ -8,20 +8,16 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, confu
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
-# Carregar o dataset
+# Carregar Dados, normalizar e separar
 dataset = load_breast_cancer()
 X = dataset.data
 y = dataset.target
-
-# Pré-processamento: Normalização dos atributos
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
-
-# Dividir o conjunto de dados em treinamento e teste
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# KNN com variação de vizinhos
-k_values = [1, 3, 5, 7]  # Valores de vizinhos a serem testados
+# KNN
+k_values = [1, 3, 5, 7]
 
 best_k = None
 best_knn_score = 0
@@ -35,8 +31,8 @@ for k in k_values:
         best_k = k
         best_knn_score = knn_avg_score
 
-# Árvore de Decisão com variação de parâmetros
-max_depth_values = [None, 5, 10, 15]  # Valores de profundidade máxima a serem testados
+# Árvore de Decisão
+max_depth_values = [None, 5, 10, 15]
 
 best_max_depth = None
 best_dt_score = 0
@@ -50,9 +46,9 @@ for max_depth in max_depth_values:
         best_max_depth = max_depth
         best_dt_score = dt_avg_score
 
-# SVM com variação de parâmetros
-C_values = [0.1, 1.0, 10.0]  # Valores de margem de tolerância a serem testados
-kernel_values = ['linear', 'rbf']  # Valores de tipo de kernel a serem testados
+# SVM
+C_values = [0.1, 1.0, 10.0]
+kernel_values = ['linear', 'rbf']
 
 best_C = None
 best_kernel = None
@@ -74,7 +70,7 @@ nb = GaussianNB()
 nb_scores = cross_val_score(nb, X_train, y_train, cv=5, scoring='accuracy')
 nb_avg_score = nb_scores.mean()
 
-# Treinamento e avaliação dos melhores modelos
+# Treinamento e avaliação
 knn = KNeighborsClassifier(n_neighbors=best_k)
 knn.fit(X_train, y_train)
 knn_predictions = knn.predict(X_test)
@@ -196,7 +192,7 @@ nb_precision = precision_score(y_test, nb_predictions)
 nb_recall = recall_score(y_test, nb_predictions)
 nb_f1_score = f1_score(y_test, nb_predictions)
 
-# Cálculo da média geral para cada método
+# Cálculo da média
 knn_avg = (knn_accuracy + knn_precision + knn_recall + knn_f1_score) / 4
 dt_avg = (dt_accuracy + dt_precision + dt_recall + dt_f1_score) / 4
 svm_avg = (svm_accuracy + svm_precision + svm_recall + svm_f1_score) / 4
